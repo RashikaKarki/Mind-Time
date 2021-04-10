@@ -26,12 +26,16 @@ The server will run on port `5000`
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
-    - ```{
+ ```{
     "email": "rashikakarki9841@gmail.com",
     "password": "123456"
-}```
+}
+``` 
+
 - **Returns:** text
-```Success
+
+```
+Success
 ```
 
 
@@ -40,10 +44,12 @@ The server will run on port `5000`
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
-    - ```{
+```
+{
     "email": "rashikakarki9841@gmail.com",
     "password": "123456"
-}```
+}
+```
 - **Returns:** JSON
 ```javascript
 {
