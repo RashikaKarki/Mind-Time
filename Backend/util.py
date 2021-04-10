@@ -33,9 +33,19 @@ def db_write(query, params):
         cursor.execute(query, params)
         db.connection.commit()
         cursor.close()
-
         return True
+    except MySQLdb._exceptions.IntegrityError:
+        cursor.close()
+        return False
 
+
+def db_update(query, params):
+    cursor = db.connection.cursor()
+    try:
+        cursor.execute(query, params)
+        db.connection.commit()
+        cursor.close()
+        return True
     except MySQLdb._exceptions.IntegrityError:
         cursor.close()
         return False
@@ -57,7 +67,7 @@ def generate_hash(plain_password, password_salt):
 
 
 def generate_jwt_token(content):
-    encoded_content = jwt.encode(content, JWT_SECRET_KEY, algorithm="HS256")
+    encoded_content = jwt.encode(content, JWT_SECRET_KEY, algorithm="HS256", exp = )
     token = str(encoded_content).split("'")[0]
     return token
 
