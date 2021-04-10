@@ -78,4 +78,43 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
 
 ```
 
-token
+
+### Send URL
+
+- **API Call:** `http://127.0.0.1:5000/api/userlog/send_url` 
+- **Request Method:** post
+- **Body**: 
+    - Content type : Application/Json
+```
+{
+    "token": "eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8",
+    "url": url of the page user switched or went to,
+    "prev_url": url of the page user switched from
+}
+```
+- **Returns:** JSON
+```javascript
+{
+    "message": "success!"
+}
+```
+
+
+### Quit URL
+
+- **API Call:** `http://127.0.0.1:5000/api/userlog/quit_url` 
+- **Request Method:** post
+- **Body**: 
+    - Content type : Application/Json
+```
+{
+    "token": "eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8",
+    "url": url of the page user quit
+}
+```
+- **Returns:** JSON
+```javascript
+{
+    "message": "success!"
+}
+```

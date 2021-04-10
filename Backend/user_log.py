@@ -17,6 +17,7 @@ def url_strip(url):
     if "/" in url:
         url = url.split('/', 1)[0]
     return url
+    
 
 '''
 API to log when tab is opened
