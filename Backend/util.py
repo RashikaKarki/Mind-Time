@@ -67,7 +67,7 @@ def generate_hash(plain_password, password_salt):
 
 
 def generate_jwt_token(content):
-    encoded_content = jwt.encode(content, JWT_SECRET_KEY, algorithm="HS256", exp = )
+    encoded_content = jwt.encode(content, JWT_SECRET_KEY, algorithm="HS256")
     token = str(encoded_content).split("'")[0]
     return token
 
