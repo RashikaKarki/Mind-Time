@@ -34,8 +34,10 @@ def getdetails():
     try:
         return jsonify(user_daily_detail[0])
     except:
-        db_write("INSERT INTO user_time (user_id, entry_date, total_time_min, total_break_taken, last_break_activity ) VALUES (%s,%s,%s,%s,%s)""", (userId, today, 0, 0, None))
-        user_daily_detail = db_read("""SELECT total_time_min, total_break_taken, last_break_activity FROM user_time WHERE user_id = %s AND entry_date = %s""", (userId,today))
-        return jsonify(user_daily_detail)
+        if db_write("INSERT INTO user_time (user_id, entry_date, total_time_min, total_break_taken, last_break_activity ) VALUES (%s,%s,%s,%s,%s)""", (userId, today, 0, 0, None)):        
+            user_daily_detail = db_read("""SELECT total_time_min, total_break_taken, last_break_activity FROM user_time WHERE user_id = %s AND entry_date = %s""", (userId,today))
+            return jsonify(user_daily_detail)
+        else:
+            return Response(status=409)
 
     
