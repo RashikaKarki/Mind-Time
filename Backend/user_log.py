@@ -9,6 +9,30 @@ from datetime import date
 
 userlog = Blueprint("userlog", __name__)
 
+def update_main_time(current_userid, time_spent):
+    today = date.today()
+
+    # Get the user daily data from database
+    user_daily_detail = db_read("""SELECT * FROM user_time WHERE user_id = %s AND entry_date = %s""", (current_userid, today))
+
+    # Check if the user has daily entry
+    
+    if len(user_daily_detail) == 0
+        if db_write("""INSERT INTO user_time (user_id, entry_date, total_time_min, total_break_taken, last_break_activity ) VALUES (%s,%s,%s,%s,%s)""", (userId, today, time_spent, 0, None)):        
+            pass
+        else:
+            return Response(status=409)
+    else:
+        total_time = dict(user_daily_detail[0])['total_time_min']
+        total_time = total_time + time_spent
+        if db_update("""UPDATE user_time set total_time_min = %s WHERE user_id = %s AND entry_date = %s """, (total_time, userId,today)):
+            pass
+        else:
+            return Response(status=409)
+
+
+
+
 
 def url_strip(url):
     if "http://" in url or "https://" in url:
@@ -17,7 +41,7 @@ def url_strip(url):
     if "/" in url:
         url = url.split('/', 1)[0]
     return url
-    
+
 
 '''
 API to log when tab is opened
@@ -61,10 +85,10 @@ def send_url():
         if recent_visit != None:
             total_time = data['total_time_min']
             time_spent = int(time.time() - recent_visit)
-            total_tim = total_time + time_spent
+            total_time = total_time + time_spent
             # updating the database
             if db_update("""UPDATE user_activity set total_time_min = %s, recent_visit_time = %s WHERE user_id = %s AND website_name = %s AND entry_date = %s """, (total_time, None, current_userid, prev_url, today)):
-                pass
+                update_main_time(current_userid, time_spent)
             else:
                 return Response(status=409)
     except:
@@ -112,10 +136,10 @@ def quit_url():
         if recent_visit != None:
             total_time = user_daily_detail['total_time_min']
             time_spent = int(time.time() - recent_visit)
-            total_tim = total_time + time_spent
+            total_time = total_time + time_spent
             # updating the database
             if db_update("""UPDATE user_activity set total_time_min = %s, recent_visit_time = %s WHERE user_id = %s AND website_name = %s AND entry_date = %s """, (total_time, None, current_userid, parent_url, today)):
-                pass
+                update_main_time(current_userid, time_spent)
             else:
                 return Response(status=409)
 
