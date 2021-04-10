@@ -46,7 +46,7 @@ def url_strip(url):
 '''
 API to log when tab is opened
 '''
-@app.route('/send_url', methods=['POST'])
+@userlog.route('/send_url', methods=['POST'])
 def send_url():
     token = request.json["token"]
     #Validating the token submitted
@@ -101,7 +101,7 @@ def send_url():
 '''
 API to log when tab is closed 
 '''
-@app.route('/quit_url', methods=['POST'])
+@userlog.route('/quit_url', methods=['POST'])
 def quit_url():
     token = request.json["token"]
     #Validating the token submitted
