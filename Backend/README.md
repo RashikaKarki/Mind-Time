@@ -12,7 +12,7 @@ Install all the packages: `pip install -r requirements.txt`
 - Step 5:
 
 ```
-set FLASK_APP=server.py
+set FLASK_APP=app.py
 flask run
 ```
 
@@ -26,7 +26,8 @@ The server will run on port `5000`
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
- ```{
+ ```
+ {
     "email": "rashikakarki9841@gmail.com",
     "password": "123456"
 }
