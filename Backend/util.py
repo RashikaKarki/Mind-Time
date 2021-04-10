@@ -1,11 +1,12 @@
 from settings import JWT_SECRET_KEY
 from flask_mysqldb import MySQLdb
 from hashlib import pbkdf2_hmac
+from flask import jsonify
 
 from app import db
 
 import os
-import jwt
+from functools import wraps
 
 
 def db_read(query, params=None):

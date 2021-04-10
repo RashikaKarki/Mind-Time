@@ -14,5 +14,7 @@ app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 db = MySQL(app)
 
 from auth import authentication
+from user_log import userlog
 
 app.register_blueprint(authentication, url_prefix="/api/auth")
+app.register_blueprint(userlog, url_prefix="/api/userlog")
