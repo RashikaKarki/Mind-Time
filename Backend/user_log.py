@@ -6,7 +6,6 @@ import jwt
 import time
 from datetime import date
 
-
 userlog = Blueprint("userlog", __name__)
 
 def update_main_time(current_userid, time_spent):
@@ -17,7 +16,7 @@ def update_main_time(current_userid, time_spent):
 
     # Check if the user has daily entry
     
-    if len(user_daily_detail) == 0
+    if len(user_daily_detail) == 0:
         if db_write("""INSERT INTO user_time (user_id, entry_date, total_time_min, total_break_taken, last_break_activity ) VALUES (%s,%s,%s,%s,%s)""", (userId, today, time_spent, 0, None)):        
             pass
         else:
@@ -25,19 +24,16 @@ def update_main_time(current_userid, time_spent):
     else:
         total_time = dict(user_daily_detail[0])['total_time_min']
         total_time = total_time + time_spent
-        if db_update("""UPDATE user_time set total_time_min = %s WHERE user_id = %s AND entry_date = %s """, (total_time, userId,today)):
+        if db_update("""UPDATE user_time set total_time_min = %s WHERE user_id = %s AND entry_date = %s """, (total_time, current_userid,today)):
             pass
         else:
             return Response(status=409)
 
 
 
-
-
 def url_strip(url):
     if "http://" in url or "https://" in url:
-        url = url.replace("https://", '').replace("http://", '') 
-            .replace('\"', '')
+        url = url.replace("https://", '').replace("http://", '').replace('\"', '')
     if "/" in url:
         url = url.split('/', 1)[0]
     return url
@@ -67,7 +63,7 @@ def send_url():
     user_daily_detail = db_read("""SELECT * FROM user_activity WHERE user_id = %s AND website_name = %s AND entry_date = %s""", (current_userid, parent_url, today))
     # Check if the user has daily entry
     if len(user_daily_detail) == 0:
-        if db_write("""INSERT INTO user_activity (user_id, entry_date, total_time_min, website_name, recent_visit_time, previous_website_id) VALUES (%s,%s,%s,%s)""", (current_userid, today, 0, parent_url, time.time(), None)):
+        if db_write("""INSERT INTO user_activity (user_id, entry_date, total_time_min, website_name, recent_visit_time) VALUES (%s,%s,%s,%s,%s)""", (current_userid, today, 0, parent_url, time.time())):
             pass
         else:
             return Response(status=409)
@@ -132,6 +128,7 @@ def quit_url():
     if len(user_daily_detail) == 0:
         pass
     else:
+        user_daily_detail = dict(user_daily_detail[0])
         recent_visit = user_daily_detail['recent_visit_time']
         if recent_visit != None:
             total_time = user_daily_detail['total_time_min']
