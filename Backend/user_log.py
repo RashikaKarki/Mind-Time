@@ -23,7 +23,7 @@ API to log when tab is opened
 '''
 @app.route('/send_url', methods=['POST'])
 def send_url():
-    token = request.args.get('token')
+    token = request.json["token"]
     #Validating the token submitted
     if not token:
         return jsonify({'message' : 'Token is missing!'}),403
@@ -69,7 +69,6 @@ def send_url():
     except:
         pass
 
-
     return jsonify({'message': 'success!'}), 200
 
 
@@ -79,8 +78,7 @@ API to log when tab is closed
 '''
 @app.route('/quit_url', methods=['POST'])
 def quit_url():
-
-    token = request.args.get('token')
+    token = request.json["token"]
     #Validating the token submitted
     if not token:
         return jsonify({'message' : 'Token is missing!'}),403
