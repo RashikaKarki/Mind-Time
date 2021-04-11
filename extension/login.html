@@ -12,7 +12,7 @@
         <form id="myform" method="post">
           <div class="login">
             <div class="header"> <h1>Welcome,</h1>
-            <h2>Register to continue.</h2> 
+            <h2>Login to continue.</h2> 
             </div>
             <div class="container">
               <label class="logintext">Email Id</label>
@@ -22,31 +22,50 @@
               <input type="password" placeholder="Enter Password" name="password" required>
               
               <div class="button">
-                <button type="submit">Register</button>
+                <button type="submit">Login</button>
               </div>
           
             </div>
             <div class="signup">
-              Already have an account? <a href="login.html">Sign In.</a>
+              Do not have an account? <a href="index.html">Register</a>
             </div>
           </div>
       </form> 
     </div>
     <script>
+      const sleep = ms => new Promise(res => setTimeout(res, ms));
       document.getElementById("myform").addEventListener(
-        'submit',function(e){
+        'submit',async function(e){
           e.preventDefault();
           const formData = new FormData(this);
           const data = Array.from(formData.entries()).reduce((memo, pair) => ({
         ...memo,
         [pair[0]]: pair[1],
       }), {});
-      fetch('https://womenhack1.herokuapp.com/api/auth/register',{
+      await sleep(1000);
+      fetch('https://womenhack1.herokuapp.com/api/auth/login',{
             method:'POST',
             body: JSON.stringify(data),
             headers: {"Content-type": "application/json"}
           }).then(response => response.json())
-  .then(data => console.log(JSON.stringify(data)));
+  .then(data => { console.log(JSON.stringify(data.jwt_token));
+  localStorage.setItem("token", data.jwt_token);                            
+});
+
+await sleep(1000);
+    fetch('https://womenhack1.herokuapp.com/api/userlog/getdetails?token='+localStorage.getItem("token"),{
+                method:'GET',
+                headers: {"Content-type": "application/json"}
+              }).then(response => response.json())
+      .then(data => { console.log(JSON.stringify(data));
+      localStorage.setItem("user_detail", data.total_time_min);                            
+    });
+
+    await sleep(3000);
+
+    window.location.href = 'landing.html'
+    
+
         }
       )
     </script>

@@ -5,23 +5,24 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-  <link rel="stylesheet" href="landing.css" />
+  <link rel="stylesheet" href="css/landing.css" />
 </head>
 
 <body>
+
   <div id="landing-content">
     <h1>Today's Tracker</h1>
     <div class="browser-usage">
       <h2 id="h2-usage">Browser Usage</h2>
       <div class="usage">
-        <div class="time-track"><span class="hours-used">00</span> hours</div>
-        <div class="time-track"><span class="min-used">00</span> minutes</div>
+        <div class="time-track"><span id="hours-used">00</span> hours</div>
+        <div class="time-track"><span id="min-used">00</span> minutes</div>
       </div>
     </div>
     <div class="next-break">
       <div class="countdown">
         <div class="next-track">
-          <span class="next-min">00</span><br>
+          <span id="countertime">00</span><br>
           minutes till <br>your next break!
         </div>
       </div>
@@ -29,23 +30,18 @@
     <div class="remind-freq">
       <h2 id="h2-freq">Reminder <br>frequency:</h2>
       <div class="slidecontainer">
-        <input type="range" min="10" max="200" value="50" class="slider" id="myRange">
+        <input type="range" min="1" max="190" value="50" class="slider" id="myRange">
       </div>
       <div class="freq-text">Every <span id="freq-min">00</span> minutes</div>
     </div>
     <div class="logout">
-      <button class="button">Log Out</button>
+      <button class="button" onclick="window.location.href = 'index.html'">Log Out</button>
+    </div>
+    <div >
+      <button id="resetbut">Set</button>
     </div>
   </div>
-  <script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("freq-min");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function () {
-      output.innerHTML = this.value;
-    }
-  </script>
+  <script src="js/landing.js"> </script>
 </body>
 
 </html>
