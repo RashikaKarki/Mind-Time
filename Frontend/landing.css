@@ -1,121 +1,153 @@
-body{
+body {
     background-image: url(images/landing-background.png);
     background-size: 354px 428px;
     background-repeat: no-repeat;
     font-family: "Lora", serif;
-    background-color: #FBF2E8;
 }
 
-h1{
+h1 {
     font-size: 32px;
-    font-weight:lighter;
+    font-weight: lighter;
     color: #333333;
     position: absolute;
     left: 50px;
-    top: 25px; 
+    top: 25px;
 }
 
-h2{
+h2 {
     font-size: 16px;
 }
 
-#h2-usage{
+#h2-usage {
     color: #FBF2E8;
-    font-weight:lighter;
+    font-weight: lighter;
     position: absolute;
     left: 125px;
-    top:125px;
+    top: 125px;
 }
 
-.usage{
+.usage {
     position: absolute;
     text-align: center;
     left: 130px;
     top: 165px;
 }
-.time-track{
+
+.time-track {
     color: #BACBD1;
-    font-size:20px;
-   
+    font-size: 20px;
+
 }
 
-.hours-used, .min-used{
+.hours-used,
+.min-used {
     color: #FAC1AD;
     font-size: 26px;
 }
 
-.next-break{
+.next-break {
     position: absolute;
     left: 50px;
     top: 230px;
 }
 
-.next-track{
-    font-size:14px;
+.next-track {
+    font-size: 14px;
     color: #333333;
 }
 
-.next-min{
+.next-min {
     color: #495E77;
     font-size: 26px;
 }
 
-#h2-freq{
+#h2-freq {
     position: absolute;
     left: 210px;
     top: 260px;
-    text-align:center;
+    text-align: center;
     font-weight: lighter;
-    color:#333333;
+    color: #333333;
 }
 
-.freq-text{
+.freq-text {
     position: absolute;
-    left:200px;
-    top:340px;
-    font-size:12px;
-    text-align:center;
+    left: 200px;
+    top: 340px;
+    font-size: 12px;
+    text-align: center;
     color: #333333
 }
 
-.slidecontainer{
+.slidecontainer {
     position: absolute;
-    left:185px;
-    top:315px;
+    left: 185px;
+    top: 315px;
 }
 
 .slider {
-    -webkit-appearance: none;  /* Override default CSS styles */
+    -webkit-appearance: none;
+    /* Override default CSS styles */
     appearance: none;
-    width: 100%; /* Full-width */
-    height: 7px; /* Specified height */
-    background: #FBF2E8; /* Grey background */
+    width: 100%;
+    /* Full-width */
+    height: 7px;
+    /* Specified height */
+    background: #FBF2E8;
+    /* Grey background */
     border-radius: 5px;
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    outline: none;
+    /* Remove outline */
+    opacity: 0.7;
+    /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s;
+    /* 0.2 seconds transition on hover */
     transition: opacity .2s;
-  }
+}
 
 /* Mouse-over effects */
 .slider:hover {
-    opacity: 1; /* Fully shown on mouse-over */
+    opacity: 1;
+    /* Fully shown on mouse-over */
 }
 
 .slider::-webkit-slider-thumb {
-    -webkit-appearance: none; /* Override default look */
+    -webkit-appearance: none;
+    /* Override default look */
     appearance: none;
-    width: 15px; /* Set a specific slider handle width */
-    height: 15px; /* Slider handle height */
-    border-radius:50%;
-    background:#495E77; /* thumb background */
-    cursor: pointer; /* Cursor on hover */
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 15px; /* Set a specific slider handle width */
-    height: 15px; /* Slider handle height */
-    border-radius:50%;
-    background: #495E77; /* thumb background */
-    cursor: pointer; /* Cursor on hover */
-  }
+    width: 15px;
+    /* Set a specific slider handle width */
+    height: 15px;
+    /* Slider handle height */
+    border-radius: 50%;
+    background: #495E77;
+    /* thumb background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    /* Set a specific slider handle width */
+    height: 15px;
+    /* Slider handle height */
+    border-radius: 50%;
+    background: #495E77;
+    /* thumb background */
+    cursor: pointer;
+    /* Cursor on hover */
+}
+
+.button {
+    position: absolute;
+    top: 385px;
+    left: 20px;
+    border: solid;
+    border-color:#BACBD1;
+    border-width: 2px;
+    border-radius: 5px;
+    background-color: #BACBD1;
+    color: #333333;
+    font-size: 14px;
+    cursor: pointer;
+}
