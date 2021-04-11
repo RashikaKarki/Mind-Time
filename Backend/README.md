@@ -12,7 +12,7 @@ Install all the packages: `pip install -r requirements.txt`
 - Step 5:
 
 ```
-set FLASK_APP=server.py
+set FLASK_APP=app.py
 flask run
 ```
 
@@ -21,12 +21,13 @@ The server will run on port `5000`
 
 ## How to call the Flask API?
 
-### Register
+## Register
 - **API Call:** `http://127.0.0.1:5000/api/auth/register` 
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
- ```{
+ ```
+ {
     "email": "rashikakarki9841@gmail.com",
     "password": "123456"
 }
@@ -39,7 +40,7 @@ Success
 ```
 
 
-### Login
+## Login
 - **API Call:** `http://127.0.0.1:5000/api/auth/login` 
 - **Request Method:** post
 - **Body**: 
@@ -59,7 +60,7 @@ Success
 
 
 
-### User Daily Detail
+## User Daily Detail
 
 - **API Call:** `http://127.0.0.1:5000/api/userlog/getdetails` 
 - **Query Param:**
@@ -79,7 +80,7 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
 ```
 
 
-### Send URL
+## Send URL
 
 - **API Call:** `http://127.0.0.1:5000/api/userlog/send_url` 
 - **Request Method:** post
@@ -100,7 +101,7 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
 ```
 
 
-### Quit URL
+## Quit URL
 
 - **API Call:** `http://127.0.0.1:5000/api/userlog/quit_url` 
 - **Request Method:** post
@@ -118,6 +119,7 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
     "message": "success!"
 }
 ```
+
 
 ### Random Task
 
@@ -137,3 +139,4 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
     }
 
 ```
+
