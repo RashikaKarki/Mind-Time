@@ -5,20 +5,22 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="breakidea.css"/>
+    <script src="taskscript.js"></script>
   </head>
 
-<body>
+<body onload="randomTask()">
   <div class="break-content">
     <div class="header"><h1>Take a break!</h1></div>
     <div class="task-container">
       <p>Why don't you...</p>
-      <div class="task-title">random task here </div>
-      <div class="task-subtext">Accompanying text/images for task.</div>
+      <div id="task-title"></div>
+      <div id="task-subtext"></div>
+      <img id="task-icon" src="" height="50px"/>
     </div>
     <div class="back-button">
-      <a href="landing.html"><img src ="back-button.png" height="50px"/></a>
+      <a href="landing.html"><img src ="images/back-button.png" height="50px"/></a>
     </div>
-    <div class="new-task"><button class="button">Show me <br>another idea</button></div>
+    <div class="new-task"><button class="button" onclick="randomTask()">Show me <br>another idea</button></div>
   </div>
 </body>
 

@@ -1,5 +1,5 @@
 body {
-    background-image: url(break-background.png);
+    background-image: url(images/break-background.png);
     background-size: 354px 428px;
     background-repeat: no-repeat;
     font-family: "Lora", serif;
@@ -30,6 +30,7 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top:20px; 
     /* stuff to see div below: delete later 
     border-style:solid;
     border-radius: 1px;
@@ -37,16 +38,20 @@ p{
     */
 }
 
-.task-title{
+#task-title{
     font-size: 32px;
     color: #FAC1AD;
     padding: 5px;
 }
 
-.task-subtext{
+#task-subtext{
     font-size: 16px;
     color: #FBF2E8;
     padding: 15px;
+}
+
+#task-icon{
+    image-resolution: 50px;
 }
 
 .button{
