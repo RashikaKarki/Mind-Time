@@ -1,5 +1,5 @@
 body {
-    background-image: url(break-background.png);
+    background-image: url(images/break-background.png);
     background-size: 354px 428px;
     background-repeat: no-repeat;
     font-family: "Lora", serif;
@@ -34,6 +34,7 @@ p{
     border-style:solid;
     border-radius: 1px;
     border-color: black;
+    padding-top:20px; 
     */
 }
 
