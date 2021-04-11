@@ -31,10 +31,11 @@ p{
     justify-content: center;
     align-items: center;
     padding-top:20px; 
-    /* stuff to see div below: delete later */
+    /* stuff to see div below: delete later 
     border-style:solid;
     border-radius: 1px;
     border-color: black;
+    */
 }
 
 #task-title{

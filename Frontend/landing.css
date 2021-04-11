@@ -66,6 +66,7 @@ h2{
     top: 260px;
     text-align:center;
     font-weight: lighter;
+    color:#333333;
 }
 
 .freq-text{
@@ -74,6 +75,7 @@ h2{
     top:340px;
     font-size:12px;
     text-align:center;
+    color: #333333
 }
 
 .slidecontainer{

@@ -8,14 +8,14 @@
     <script src="taskscript.js"></script>
   </head>
 
-<body>
+<body onload="randomTask()">
   <div class="break-content">
     <div class="header"><h1>Take a break!</h1></div>
     <div class="task-container">
       <p>Why don't you...</p>
-      <div id="task-title">take a screen break?</div>
-      <div id="task-subtext">Give your eyes a rest!</div>
-      <div id="task-icon"><img src="images/water.png" height="50px"/></div>
+      <div id="task-title"></div>
+      <div id="task-subtext"></div>
+      <img id="task-icon" src="" height="50px"/>
     </div>
     <div class="back-button">
       <a href="landing.html"><img src ="images/back-button.png" height="50px"/></a>
