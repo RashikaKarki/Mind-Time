@@ -1,4 +1,5 @@
-# WomenHack
+# Mind Time
+
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
 [![GitHub Issues](https://img.shields.io/github/issues/RashikaKarki/WomenHack.svg)](https://github.com/RashikaKarki/WomenHack/issues)
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RashikaKarki/WomenHack.svg)](https://github.com/RashikaKarki/WomenHack/pulls)
