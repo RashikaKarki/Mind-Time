@@ -62,10 +62,10 @@ The server will run on port `5000`
 }
 ``` 
 
-- **Returns:** text
+- **Returns:** Json
 
 ```
-Success
+{"message" : "Success"}
 ```
 
 
