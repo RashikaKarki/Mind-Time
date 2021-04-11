@@ -1,0 +1,69 @@
+body {
+    background-image: url(break-background.png);
+    background-size: 354px 428px;
+    background-repeat: no-repeat;
+    font-family: "Lora", serif;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: lighter;
+    color: #333333;
+    position: absolute;
+    left: 70px;
+    top: 10px;
+}
+
+p{
+    color: #FBF2E8;
+    font-size: 16px;
+}
+
+.task-container {
+    position: absolute;
+    left: 15px;
+    top: 70px;
+    height: 290px;
+    width: 310px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* stuff to see div below: delete later 
+    border-style:solid;
+    border-radius: 1px;
+    border-color: black;
+    */
+}
+
+.task-title{
+    font-size: 32px;
+    color: #FAC1AD;
+    padding: 5px;
+}
+
+.task-subtext{
+    font-size: 16px;
+    color: #FBF2E8;
+    padding: 15px;
+}
+
+.button{
+    position: absolute;
+    top:370px;
+    left:235px;
+
+    background-color:Transparent;
+    border: none;
+    color: #495E77;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.back-button{
+    position: absolute;
+    top: 363px;
+    left: 15px;
+    cursor: pointer;
+}
