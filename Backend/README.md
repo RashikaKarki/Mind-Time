@@ -118,3 +118,22 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
     "message": "success!"
 }
 ```
+
+### Random Task
+
+- **API Call:** `http://127.0.0.1:5000/api/userlog/randomtask` 
+- **Query Param:**
+```
+token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
+```
+- **Request Method:** get
+- **Returns:** JSON
+```javascript
+
+    {
+        "last_break_activity": null,
+        "total_break_taken": 0,
+        "total_time_min": 0
+    }
+
+```
