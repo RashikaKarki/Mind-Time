@@ -54,6 +54,7 @@ p{
 
 #task-icon{
     image-resolution: 50px;
+    cursor: pointer;
 }
 
 .button{
