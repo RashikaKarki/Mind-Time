@@ -15,7 +15,7 @@ def register_user():
             (user_email, password_salt, password_hash),
         ):
             # Registration Successful
-            return jsonify({'message': 'quit success!'}), 200
+            return jsonify({'message': 'Success!'}), 200
         else:
             # Registration Failed
             return Response(status=409)

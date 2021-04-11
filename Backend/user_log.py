@@ -2,6 +2,7 @@ from flask import Blueprint, request, Response, jsonify
 from util import db_read, db_write, db_update
 from settings import JWT_SECRET_KEY
 import jwt
+import random
 
 import time
 from datetime import date
@@ -178,3 +179,55 @@ def getdetails():
             return Response(status=409)
 
     
+'''
+API endpoint to get random daily task
+'''
+@userlog.route("/randomtask", methods=["GET"])
+def getrandomtask():
+    token = request.args.get('token')
+    #Validating the token submitted
+    if not token:
+        return jsonify({'message' : 'Token is missing!'}),403
+    try:
+        data = jwt.decode(token, JWT_SECRET_KEY, algorithm="HS256")
+    except:
+        return jsonify({'message' : 'Token is invalid!'}),403
+
+    data = dict(data)
+    # Access the identity of the current user with get_jwt_identity
+    userId = data['id']
+
+    today = date.today()
+
+    # Get the user daily data from database
+    user_daily_detail = db_read("""SELECT total_time_min, total_break_taken, last_break_activity FROM user_time WHERE user_id = %s AND entry_date = %s""", (userId,today))
+
+    # Check if the user has daily entry
+    if len(user_daily_detail) == 0:
+        if db_write("""INSERT INTO user_time (user_id, entry_date, total_time_min, total_break_taken, last_break_activity ) VALUES (%s,%s,%s,%s,%s)""", (userId, today, 0, 0, None)):
+            activities = db_read("""SELECT * FROM activity """, )
+            n = random. randint(0,len(activities))
+            activity = dict(activities[n])
+            if db_update("""UPDATE user_time set total_break_taken = %s, set last_break_activity = %s WHERE user_id = %s AND entry_date = %s """, (1, activity['id'],userId,today)):
+                pass
+            else:
+                return Response(status=409)
+            return jsonify(activity)
+        else:
+            return Response(status=409)
+
+    else:
+        try:
+            last_break_activity = int(dict(user_daily_detail[0])['last_break_activity'])
+            print(last_break_activity)
+            activities = db_read("""SELECT * FROM activity WHERE id <> %s""", last_break_activity)
+        except:
+            activities = db_read("""SELECT * FROM activity""", )
+        n = random. randint(0,len(activities)-1)
+        activity = activities[n]
+        total_break = int(dict(user_daily_detail[0])['total_break_taken']) + 1
+        if db_update("""UPDATE user_time set total_break_taken = %s, set last_break_activity = %s WHERE user_id = %s AND entry_date = %s """, (total_break, activity['id'],userId,today)):
+            pass
+        else:
+            return Response(status=409)
+        return jsonify(activity)

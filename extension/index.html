@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign In</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://womenhack1.herokuapp.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet"  href="css/main.css"/>
+  </head>
+  <body>  
+    <div id = "home"> 
+        <form id="myform" method="post">
+          <div class="login">
+            <div class="header"> <h1>Welcome,</h1>
+            <h2>Register to continue.</h2> 
+            </div>
+            <div class="container">
+              <label class="logintext">Email Id</label>
+              <input type="email" placeholder="Enter Email Id" name="email" required>
+
+              <label class="logintext">Password</label>
+              <input type="password" placeholder="Enter Password" name="password" required>
+              
+              <div class="button">
+                <button type="submit">Register</button>
+              </div>
+          
+            </div>
+            <div class="signup">
+              Already have an account? <a href="login.html">Sign In.</a>
+            </div>
+          </div>
+      </form> 
+    </div>
+    <script>
+      document.getElementById("myform").addEventListener(
+        'submit',function(e){
+          e.preventDefault();
+          const formData = new FormData(this);
+          const data = Array.from(formData.entries()).reduce((memo, pair) => ({
+        ...memo,
+        [pair[0]]: pair[1],
+      }), {});
+      fetch('https://womenhack1.herokuapp.com/api/auth/register',{
+            method:'POST',
+            body: JSON.stringify(data),
+            headers: {"Content-type": "application/json"}
+          }).then(response => response.json())
+  .then(data => console.log(JSON.stringify(data)));
+        }
+      )
+    </script>
+  </body>
+</html>

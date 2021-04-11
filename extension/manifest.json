@@ -1,0 +1,28 @@
+{
+ 
+    "manifest_version": 2,
+    "name": "Browse Time",
+    "version": "2.0",
+   
+    "description": "Tracks your browsing time on any given domain",
+   
+    "background": {
+      "scripts": ["backgroundcode.js"],
+      "persistent":false
+    },
+   
+   
+    "permissions": [
+      "tabs", "activeTab",
+      "webNavigation",
+      "storage",
+      "notifications"
+    ],
+   
+    "browser_action": {
+      "default_icon": "/images/logo.png",
+      "default_title": "Browse Time",
+      "default_popup": "landing.html"
+    }
+   
+  }

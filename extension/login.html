@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sign In</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://womenhack1.herokuapp.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet"  href="css/main.css"/>
+  </head>
+  <body>  
+    <div id = "home"> 
+        <form id="myform" method="post">
+          <div class="login">
+            <div class="header"> <h1>Welcome,</h1>
+            <h2>Login to continue.</h2> 
+            </div>
+            <div class="container">
+              <label class="logintext">Email Id</label>
+              <input type="email" placeholder="Enter Email Id" name="email" required>
+
+              <label class="logintext">Password</label>
+              <input type="password" placeholder="Enter Password" name="password" required>
+              
+              <div class="button">
+                <button type="submit">Login</button>
+              </div>
+          
+            </div>
+            <div class="signup">
+              Do not have an account? <a href="index.html">Register</a>
+            </div>
+          </div>
+      </form> 
+    </div>
+    <script>
+      const sleep = ms => new Promise(res => setTimeout(res, ms));
+      document.getElementById("myform").addEventListener(
+        'submit',async function(e){
+          e.preventDefault();
+          const formData = new FormData(this);
+          const data = Array.from(formData.entries()).reduce((memo, pair) => ({
+        ...memo,
+        [pair[0]]: pair[1],
+      }), {});
+      await sleep(1000);
+      fetch('https://womenhack1.herokuapp.com/api/auth/login',{
+            method:'POST',
+            body: JSON.stringify(data),
+            headers: {"Content-type": "application/json"}
+          }).then(response => response.json())
+  .then(data => { console.log(JSON.stringify(data.jwt_token));
+  localStorage.setItem("token", data.jwt_token);                            
+});
+
+await sleep(1000);
+    fetch('https://womenhack1.herokuapp.com/api/userlog/getdetails?token='+localStorage.getItem("token"),{
+                method:'GET',
+                headers: {"Content-type": "application/json"}
+              }).then(response => response.json())
+      .then(data => { console.log(JSON.stringify(data));
+      localStorage.setItem("user_detail", data.total_time_min);                            
+    });
+
+    await sleep(3000);
+
+    window.location.href = 'landing.html'
+    
+
+        }
+      )
+    </script>
+  </body>
+</html>
