@@ -38,7 +38,7 @@ Go to folder Flask API
 Install all the packages: `pip install -r requirements.txt`
 - Step 5:
 
-```
+```python
 set FLASK_APP=app.py
 flask run
 ```
@@ -55,7 +55,7 @@ The server will run on port `5000`
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
- ```
+ ```javascript
  {
     "email": "rashikakarki9841@gmail.com",
     "password": "123456"
@@ -64,7 +64,7 @@ The server will run on port `5000`
 
 - **Returns:** Json
 
-```
+```javascript
 {"message" : "Success"}
 ```
 
@@ -74,7 +74,7 @@ The server will run on port `5000`
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
-```
+```javascript
 {
     "email": "rashikakarki9841@gmail.com",
     "password": "123456"
@@ -115,7 +115,7 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
-```
+```javascript
 {
     "token": "eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8",
     "url": url of the page user switched or went to,
@@ -136,7 +136,7 @@ token = eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8
 - **Request Method:** post
 - **Body**: 
     - Content type : Application/Json
-```
+```javascript
 {
     "token": "eyJ0eXAiOadsd.......8VdcTdRYrvlDfWKQqX8",
     "url": url of the page user quit
